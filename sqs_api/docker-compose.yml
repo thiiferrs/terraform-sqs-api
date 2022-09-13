@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  sqsapi:
+    build: .
+    ports: 
+      - "8081:8081"
+    restart: always
+    env_file: ../terraform/.env

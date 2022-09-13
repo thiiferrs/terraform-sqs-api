@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  terraform:
+    image: hashicorp/terraform:light
+    volumes:
+      - .:/terraform
+    working_dir: /terraform
+    command: 'init -backend-config=backend.config'
+    env_file: .env

@@ -1,0 +1,18 @@
+{
+    "name": "api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "start-sqsapi-svc": "node ./sqsapisvc/index.js 8081",
+      "start": "npm-run-all -p -r start-sqsapi-svc"
+    },
+  
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "body-parser": "^1.20.0",
+      "express": "^4.18.1",
+      "npm-run-all": "^4.1.5"
+    }
+  }  
