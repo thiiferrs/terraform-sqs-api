@@ -10,10 +10,10 @@ const app = express();
 app.use(bodyParser.json());
 
 app.get('/index', (req, res) => {
-  res.send("Welcome to suggestions API v.04")
+  res.send("Welcome to suggestions API - v.04")
 });
 
-console.log(`Suggestions msg listening on port ${port}`);
+console.log(`Servidor rodando na porta: ${port}`);
 app.listen(port);
 
 
@@ -31,7 +31,7 @@ app.post('/order', (req, res) => {
       'userEmail': req.body['userEmail'],
       'suggestion': req.body['suggestion']
   }
-
+  // Remove DelaySeconds parameter and value for FIFO queues
   let sqsOrderData = {
       DelaySeconds: 10,
       MessageAttributes: {
@@ -45,6 +45,8 @@ app.post('/order', (req, res) => {
         }
       },
       MessageBody: JSON.stringify(orderData),
+      // MessageDeduplicationId: "TheWhistler",  // Required for FIFO queues
+      // MessageGroupId: "Group1",  // Required for FIFO queues
       QueueUrl: process.env.QUEUEURL
   };
 
@@ -52,11 +54,11 @@ app.post('/order', (req, res) => {
   let sendSqsMessage = sqs.sendMessage(sqsOrderData).promise();
 
   sendSqsMessage.then((data) => {
-      console.log("SUCCESSO: ", data.MessageId);
+      console.log("SUCCESSO, MessageId: ", data.MessageId);
       res.send("Msg enviada");
   }).catch((err) => {
       console.log("ERROR: ",err);
-      res.send("Error. Please try again.");
+      res.send("Error. Tente novamente.");
   });
 });
 
