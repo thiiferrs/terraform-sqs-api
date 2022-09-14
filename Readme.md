@@ -1,8 +1,13 @@
 ### Steps
-
+---
 ### Terraform
 
-1. Credenciais e IAM Policy*
+1. Credenciais e IAM Policy
+
+- Criar um usuario com acesso programatico e com as permissões no quadro a seguir. 
+
+- Criar um arquivo **.env** na pasta: **terraform/.env** com as credenciais - AWS_ACCESS_KEY_ID="" AWS_SECRET_ACCESS_KEY="" e AWS_DEFAULT_REGION=""
+
 
 IAM Policy requerida:
 ```json
@@ -47,10 +52,6 @@ IAM Policy requerida:
     ]
 }
 ```
-
-
-
-Criar um arquivo **.env** na pasta: **terraform/.env** com as credenciais - AWS_ACCESS_KEY_ID="..." AWS_SECRET_ACCESS_KEY="..." e AWS_DEFAULT_REGION="..."
 
 2. Criar um bucket no s3 para o armazenamento do terraform state.
 
