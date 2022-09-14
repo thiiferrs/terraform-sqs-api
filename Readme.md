@@ -4,6 +4,52 @@
 
 1. Credenciais e IAM Policy*
 
+IAM Policy requerida:
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "sqs:DeleteMessage",
+                "s3:ListAccessPointsForObjectLambda",
+                "sqs:UntagQueue",
+                "sqs:ReceiveMessage",
+                "s3:ListBucketVersions",
+                "s3:ListBucket",
+                "sqs:ListQueueTags",
+                "ec2:DescribeAccountAttributes",
+                "sqs:SetQueueAttributes",
+                "sqs:GetQueueUrl",
+                "sqs:ListQueues",
+                "s3:ListBucketMultipartUploads",
+                "sqs:ChangeMessageVisibility",
+                "s3:ListAccessPoints",
+                "s3:ListJobs",
+                "sqs:SendMessage",
+                "sqs:GetQueueAttributes",
+                "s3:ListMultiRegionAccessPoints",
+                "s3:ListMultipartUploadParts",
+                "s3:ListStorageLensConfigurations",
+                "sqs:TagQueue",
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:ListAllMyBuckets",
+                "sqs:PurgeQueue",
+                "sqs:DeleteQueue",
+                "sqs:CreateQueue",
+                "sts:GetCallerIdentity"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+
+
 Criar um arquivo **.env** na pasta: **terraform/.env** com as credenciais - AWS_ACCESS_KEY_ID="..." AWS_SECRET_ACCESS_KEY="..." e AWS_DEFAULT_REGION="..."
 
 2. Criar um bucket no s3 para o armazenamento do terraform state.
@@ -44,17 +90,17 @@ http://host-ip:8081/order -> POST
 
 Para envio da mensagem enviar um Payload para a URL: http://host-ip:8081/order
 
+
 Teste feito pelo Postman:
 
 - New HTTP Request > POST > http://host-ip:8081/order
   - Selecionar Body > raw > JSON
-
-    - Colar o conteudo:
-```
+  - Colar o conteudo do Payload, "userEmail" e "suggestion":
+```json
 {
     "userEmail": "...",
     "suggestion": "It is not despair, for despair is only for those who see the end beyond all doubt. We do not"
 }
 ```
 
-Obs:
+Obs: ...
