@@ -6,7 +6,7 @@
 
 1. Credenciais e IAM Policy
 
-- Criar um usuario com acesso programatico e com as permissões no quadro a seguir. 
+- Criar um usuário com acesso programático e com as permissões no quadro a seguir. 
 
 - Criar um arquivo **.env** na pasta: **terraform/.env** com as credenciais - AWS_ACCESS_KEY_ID="" AWS_SECRET_ACCESS_KEY="" e AWS_DEFAULT_REGION=""
 
@@ -68,7 +68,7 @@ Depois de criar o bucket referencia-lo no arquivo [terraform/backend.config](htt
 
 Executar o docker compose da pasta [terraform](https://github.com/thiiferrs/terraform-sqs-api/blob/main/terraform)
 
-*Na primeira inicialização do compose já será feito a inicialiação (init) do terraform*
+*Na primeira inicialização do compose já será feito a inicialização (init) do terraform*
 ```
 $ docker compose -f terraform/docker-compose.yml up
 ```
@@ -133,3 +133,11 @@ Depois do envio deverá aparecer na console a confirmação e a MessageId:
 ### Diagrama do projeto
 
 ![Diagrama](https://github.com/thiiferrs/terraform-sqs-api/blob/b91a7cfbd4c30c6e1afd420ba6db0d915b7718ec/AWS_SQS.drawio.png)
+
+<br />
+
+### Roadmap
+
+- Worker e aplicação para consumir SQS queue
+- Instancia Mongodb
+- Service Discovery
